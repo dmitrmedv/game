@@ -18,9 +18,10 @@ let count = {
 restart.addEventListener('click', reset);
 
 function showBunner(message) {
-  console.log(12345);
-  backdrop.classList.remove('hidden');
-  winner.textContent = message;
+  setTimeout(() => {
+    backdrop.classList.remove('hidden');
+    winner.textContent = message;
+  }, 500);
 }
 
 function makeMurckup() {
@@ -33,7 +34,11 @@ function makeMurckup() {
 
 function reset() {
   backdrop.classList.add('hidden');
-  boxes.forEach(item => (item.innerHTML = ''));
+  boxes.forEach(item => {
+    item.innerHTML = '';
+    item.classList.remove('green');
+    item.classList.remove('yellow');
+  });
   userX = [];
   userO = [];
   marker = 'X';
@@ -63,16 +68,41 @@ function onClick(e) {
     marker === 'X' ? (marker = 'O') : (marker = 'X');
   }
 
-  if (winnerCombinations.some(item => item.every(el => userX.includes(el)))) {
+  let conbinationX = winnerCombinations.find(item =>
+    item.every(el => userX.includes(el))
+  );
+
+  let combinationO = winnerCombinations.find(item =>
+    item.every(el => userO.includes(el))
+  );
+
+  if (conbinationX) {
     showBunner('Виграв гравець Х');
+    [...boxes].forEach(item => {
+      if (conbinationX.includes(Number(item.dataset.id))) {
+        item.classList.add('green');
+      }
+    });
     return;
   }
-  if (winnerCombinations.some(item => item.every(el => userO.includes(el)))) {
+  if (combinationO) {
     showBunner('Виграв гравець О');
+    [...boxes].forEach(item => {
+      if (combinationO.includes(Number(item.dataset.id))) {
+        item.classList.add('green');
+      }
+    });
     return;
   }
   if (userX.length === 5 || userX.length === 5) {
     showBunner('Нічия 😵');
+    boxes.forEach(item => {
+      if (Number(item.dataset.id) % 2 === 0) {
+        item.classList.add('green');
+      } else {
+        item.classList.add('yellow');
+      }
+    });
     return;
   }
 }
