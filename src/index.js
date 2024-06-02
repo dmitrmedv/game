@@ -18,10 +18,10 @@ let count = {
 restart.addEventListener('click', reset);
 
 function showBunner(message) {
+  winner.textContent = message;
   setTimeout(() => {
     backdrop.classList.remove('hidden');
-    winner.textContent = message;
-  }, 500);
+  }, 1500);
 }
 
 function makeMurckup() {
@@ -34,6 +34,7 @@ function makeMurckup() {
 
 function reset() {
   backdrop.classList.add('hidden');
+  winner.textContent = '';
   boxes.forEach(item => {
     item.innerHTML = '';
     item.classList.remove('green');
@@ -58,7 +59,11 @@ const winnerCombinations = [
 container.addEventListener('click', onClick);
 
 function onClick(e) {
-  if (e.target.classList.contains('box') && e.target.textContent === '') {
+  if (
+    e.target.classList.contains('box') &&
+    e.target.textContent === '' &&
+    winner.textContent === ''
+  ) {
     e.target.textContent = marker;
     if (marker === 'X') {
       userX.push(Number(e.target.dataset.id));
