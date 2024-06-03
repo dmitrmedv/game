@@ -80,7 +80,7 @@ body {
 .box {
   width: calc(100% / 3);
   height: calc(100% / 3);
-  /* outline: 1px solid black; */
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
