@@ -27,7 +27,7 @@ function showBunner(message) {
 function makeMurckup() {
   let murckup = '';
   for (let i = 0; i < 9; i += 1) {
-    murckup += `<div class="box" data-id=${i}></div>`;
+    murckup += `<div class="box js-box${i}" data-id=${i}></div>`;
   }
   return murckup;
 }

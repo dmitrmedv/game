@@ -68,11 +68,12 @@ body {
 .box {
   width: calc(100% / 3);
   height: calc(100% / 3);
-  outline: 1px solid black;
+  /* outline: 1px solid black; */
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 100px;
+  box-sizing: border-box;
 }
 
 .restart {
@@ -88,4 +89,20 @@ body {
 
 .yellow {
   background-color: yellow;
+}
+
+.js-box4 {
+  border: 2px solid black;
+}
+
+.js-box1,
+.js-box7 {
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+}
+
+.js-box3,
+.js-box5 {
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
 }
