@@ -25,7 +25,7 @@ function showBunner(message) {
   userO = [];
   setTimeout(() => {
     backdrop.classList.remove('hidden');
-  }, 1500);
+  }, 1000);
 }
 
 function makeMurckup() {
