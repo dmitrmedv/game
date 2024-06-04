@@ -1,10 +1,12 @@
-const container = document.querySelector('.container');
+const game = document.querySelector('.game');
 const text = document.querySelector('.text');
 const restart = document.querySelector('.restart');
 const backdrop = document.querySelector('.backdrop');
 const winner = document.querySelector('.winner');
+const coinX = document.querySelector('.userX');
+const coinO = document.querySelector('.userO');
 
-container.insertAdjacentHTML('beforeend', makeMurckup());
+game.insertAdjacentHTML('beforeend', makeMurckup());
 const boxes = document.querySelectorAll('.box');
 
 let userX = [];
@@ -19,6 +21,8 @@ restart.addEventListener('click', reset);
 
 function showBunner(message) {
   winner.textContent = message;
+  userX = [];
+  userO = [];
   setTimeout(() => {
     backdrop.classList.remove('hidden');
   }, 1500);
@@ -40,8 +44,7 @@ function reset() {
     item.classList.remove('green');
     item.classList.remove('yellow');
   });
-  userX = [];
-  userO = [];
+
   marker = 'X';
 }
 
@@ -56,7 +59,7 @@ const winnerCombinations = [
   [2, 4, 6],
 ];
 
-container.addEventListener('click', onClick);
+game.addEventListener('click', onClick);
 
 function onClick(e) {
   if (
@@ -83,6 +86,8 @@ function onClick(e) {
 
   if (conbinationX) {
     showBunner('Виграв гравець Х');
+    count.userX += 1;
+    coinX.textContent = count.userX;
     [...boxes].forEach(item => {
       if (conbinationX.includes(Number(item.dataset.id))) {
         item.classList.add('green');
@@ -92,6 +97,9 @@ function onClick(e) {
   }
   if (combinationO) {
     showBunner('Виграв гравець О');
+    count.userO += 1;
+    coinO.textContent = count.userO;
+
     [...boxes].forEach(item => {
       if (combinationO.includes(Number(item.dataset.id))) {
         item.classList.add('green');

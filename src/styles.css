@@ -2,34 +2,66 @@ body {
   padding: 0;
   margin: 0;
 }
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
 @media only screen and (max-width: 400px) {
   .container {
     width: 350px;
-    height: 350px;
-    margin: 50% auto;
   }
 }
 
 @media only screen and (min-width: 401px) and (max-width: 850px) {
   .container {
     width: 350px;
-    height: 350px;
-    margin: 2% auto;
   }
 }
 
 @media only screen and (min-width: 851px) {
   .container {
     width: 650px;
-    height: 650px;
-    margin: 5% auto;
   }
 }
 
 .container {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.counter {
+  width: 100%;
+}
+
+.players {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.player {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.game {
+  display: flex;
   flex-wrap: wrap;
   position: relative;
+  height: 650px;
+  width: 100%;
 }
 
 .backdrop {
@@ -80,7 +112,6 @@ body {
 .box {
   width: calc(100% / 3);
   height: calc(100% / 3);
-  /* outline: 1px solid black; */
   display: flex;
   align-items: center;
   justify-content: center;
